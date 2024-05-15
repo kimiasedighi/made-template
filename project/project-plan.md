@@ -2,36 +2,34 @@
 
 ## Title
 
-Comparative Analysis of Causes of Death
+Impact of Climate Change: Analysis of Global Carbon Dioxide Levels and Surface Temperature Changes
 
 ## Main Question
 
-1. What are the leading causes of death, and how do they vary by different demographics and over time?
-
+1. How has climate change influenced global carbon dioxide levels in the atmosphere and surface temperature changes over time?
+   
 ## Description
 
-Understanding the primary causes of mortality is crucial for public health planning and prevention strategies. This project aims to analyze various factors leading to death, utilizing datasets that detail the number of deaths by different causes over specific periods. By examining data on demographics such as age, gender, and ethnicity, the study will identify key trends and differences in mortality rates. The insights gained could inform public health policies and interventions aimed at reducing mortality rates, thereby potentially extending life expectancy. The analysis will be conducted using statistical methods to ensure robust and actionable results.
+This project investigates the impact of climate change on global carbon dioxide levels and surface temperature changes, aiming to elucidate their interconnected dynamics. Leveraging datasets on World Monthly Atmospheric Carbon Dioxide Concentrations and Annual Surface Temperature Change, sourced from reputable organizations, the study explores temporal trends and potential correlations between these critical climate indicators. By employing advanced statistical techniques and visualization tools, the analysis seeks to uncover patterns, anomalies, and potential causal links influenced by climate change. Insights gleaned from this investigation could contribute to a deeper understanding of climate change's effects on atmospheric carbon dioxide concentrations and surface temperature changes, informing policy-making efforts aimed at mitigating its adverse impacts.
 
 ## Datasources
 
 ### Datasource1:
 
-* Data URL: https://data.cdc.gov/api/views/65mz-jvh5/rows.csv?accessType=DOWNLOAD
+* Data URL: https://climatedata.imf.org/datasets/4063314923d74187be9596f10d034914/explore
 * Data Type: CSV
 
-This dataset provides provisional counts of deaths by month, age group, sex, and race/ethnicity, categorized by select underlying causes of death for the years 2020-2021.
+This dataset presents the mean surface temperature change during the period 1961-2021, using temperatures between 1951 and 1980 as a baseline.
 
 ### Datasource2:
 
-* Data URL: https://data.cdc.gov/api/views/9dzk-mvmi/rows.csv?accessType=DOWNLOAD
+* Data URL: https://climatedata.imf.org/datasets/9c3764c0efcc4c71934ab3988f219e0e/explore
 * Data Type: CSV
 
-This dataset provides provisional counts of deaths by the month the death occurred and by select causes of death for 2020-2023.
+This dataset presents the concentration of carbon dioxide in the atmosphere on a monthly and yearly basis, dating back to 1958.
 
 
 ## Work Packages
-
-<!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 1. Data Acquisition [#1][i1]
 2. ...
