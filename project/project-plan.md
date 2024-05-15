@@ -16,18 +16,17 @@ This project investigates the impact of climate change on global carbon dioxide 
 
 ### Datasource1:
 
-* Data URL: https://climatedata.imf.org/datasets/4063314923d74187be9596f10d034914/explore
-* Data Type: CSV
-
-This dataset presents the mean surface temperature change during the period 1961-2021, using temperatures between 1951 and 1980 as a baseline.
-
-### Datasource2:
-
 * Data URL: https://climatedata.imf.org/datasets/9c3764c0efcc4c71934ab3988f219e0e/explore
 * Data Type: CSV
 
 This dataset presents the concentration of carbon dioxide in the atmosphere on a monthly and yearly basis, dating back to 1958.
 
+### Datasource2:
+
+* Data URL: https://climatedata.imf.org/datasets/4063314923d74187be9596f10d034914/explore
+* Data Type: CSV
+
+This dataset presents the mean surface temperature change during the period 1961-2021, using temperatures between 1951 and 1980 as a baseline.
 
 ## Work Packages
 
