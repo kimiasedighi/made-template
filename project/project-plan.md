@@ -17,8 +17,8 @@ This project investigates the impact of climate change on global carbon dioxide 
 ### Datasource1:
 
 * Data: https://climatedata.imf.org/datasets/9c3764c0efcc4c71934ab3988f219e0e/explore
-* Data URL: https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Indicator_3_2_Climate_Indicators_Monthly_Atmospheric_Carbon_Dioxide_concentrations/FeatureServer/0/query?where=1=1&outFields=*&f=json
-* Data Type: JSON
+* Data URL: https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Indicator_3_2_Climate_Indicators_Monthly_Atmospheric_Carbon_Dioxide_concentrations/FeatureServer/0/query?where=1=1&outFields=*&f=geojson
+* Data Type: GeoJSON
 
 This dataset presents the concentration of carbon dioxide in the atmosphere on a monthly and yearly basis, dating back to 1958.
 
