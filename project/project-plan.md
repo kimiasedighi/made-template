@@ -29,7 +29,7 @@ This dataset presents the concentration of carbon dioxide in the atmosphere on a
 https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Indicator_3_1_Climate_Indicators_Annual_Mean_Global_Surface_Temperature/FeatureServer/0/query?where=1=1&outFields=*&f=geojson
 * Data Type: GeoJSON
 
-This dataset presents the mean surface temperature change during the period 1961-2021, using temperatures between 1951 and 1980 as a baseline.
+This dataset presents the mean surface temperature change during the period 1961-2023, using temperatures between 1951 and 1980 as a baseline.
 
 ## Work Packages
 
