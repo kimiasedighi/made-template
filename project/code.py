@@ -46,13 +46,14 @@ if __name__ == "__main__":
         geojson_to_csv(geojson_data, csv_filename)
 
     df = pd.read_csv(csv_filename)
-    # Drop the 'ISO2', 'ISO3', ects. (not needed cols) columns if they exist
+
+    # Drop the 'ISO2', 'ISO3', etc. (not needed columns) if they exist
     df = df.drop(columns=['ISO2', 'ISO3', 'Indicator', 'Source', 'CTS_Code', 'CTS_Name', 'CTS_Full_Descriptor'], errors='ignore')
           
-    # Ensure the value column is numeric 
+    # Ensure the 'Value' column is numeric 
     df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
 
-    # Drop rows with invalid 'Date' or 'value'
+    # Drop rows with invalid 'Date' or 'Value'
     df = df.dropna(subset=['Date', 'Value'])
 
     # Write the updated DataFrame back to CSV
@@ -66,7 +67,8 @@ if __name__ == "__main__":
         geojson_to_csv(geojson_data, csv_filename)
 
     df = pd.read_csv(csv_filename)
-    # Drop the 'ISO2', 'ISO3', ects. (not needed cols) columns if they exist
+    
+    # Drop the 'ISO2', 'ISO3', etc. (not needed columns) if they exist
     df = df.drop(columns=['ISO2', 'ISO3', 'Indicator', 'Source', 'CTS_Code', 'CTS_Name', 'CTS_Full_Descriptor'], errors='ignore')
     
     # Check if values in columns from 'F1961' to 'F2023' are decimal numbers
