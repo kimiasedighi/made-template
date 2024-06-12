@@ -3,6 +3,7 @@ import geojson
 import csv
 import pandas as pd
 import os
+import sqlite3
 
 
 def fetch_geojson_data(url):
@@ -37,6 +38,11 @@ def geojson_to_csv(geojson_data, csv_filename):
     else:
         print("No GeoJSON data to process.")
 
+def save_to_sqlite(df, db_path, table_name):
+    with sqlite3.connect(db_path) as conn:
+        df.to_sql(table_name, conn, if_exists='replace', index=False)
+        print(f"Data successfully written to {db_path} in table {table_name}")
+
 if __name__ == "__main__":
     url = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Indicator_3_2_Climate_Indicators_Monthly_Atmospheric_Carbon_Dioxide_concentrations/FeatureServer/0/query?where=1=1&outFields=*&f=geojson"
     geojson_data = fetch_geojson_data(url)
@@ -56,8 +62,11 @@ if __name__ == "__main__":
     # Drop rows with invalid 'Date' or 'Value'
     df = df.dropna(subset=['Date', 'Value'])
 
-    # Write the updated DataFrame back to CSV
-    df.to_csv(csv_filename, index=False)
+    db_path = os.path.join("..", "data", "carbon_dioxide.db")
+    save_to_sqlite(df, db_path, "carbon_dioxide")
+
+    # Delete the CSV file after saving to the database
+    os.remove(csv_filename)
     
     url = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Indicator_3_1_Climate_Indicators_Annual_Mean_Global_Surface_Temperature/FeatureServer/0/query?where=1=1&outFields=*&f=geojson"
     geojson_data = fetch_geojson_data(url)
@@ -73,12 +82,14 @@ if __name__ == "__main__":
     
     # Check if values in columns from 'F1961' to 'F2023' are decimal numbers
     cols_to_check = df.loc[:, 'F1961':'F2023']
-    is_decimal = cols_to_check.applymap(lambda x: isinstance(x, float) or (isinstance(x, str) and x.replace('.', '', 1).isdigit()))
+    is_decimal = cols_to_check.apply(lambda col: col.map(lambda x: isinstance(x, float) or (isinstance(x, str) and x.replace('.', '', 1).isdigit())))
             
     # Filter rows where all values in columns from 'F1961' to 'F2023' are decimal numbers
     valid_rows = is_decimal.all(axis=1)
     df = df[valid_rows]
 
-    # Write the updated DataFrame back to CSV
-    df.to_csv(csv_filename, index=False)
+    db_path = os.path.join("..", "data", "surface_temperature.db")
+    save_to_sqlite(df, db_path, "surface_temperature")
 
+    # Delete the CSV file after saving to the database
+    os.remove(csv_filename)
