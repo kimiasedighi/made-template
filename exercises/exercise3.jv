@@ -5,7 +5,7 @@ pipeline GoodsPipeline {
     }
 
     block GoodsTextFileInterpreter oftype TextFileInterpreter {
-        encoding: "utf8";
+        encoding: "latin2";
     }
 
     block GoodsCSVInterpreter oftype CSVInterpreter {
