@@ -6,7 +6,7 @@ rm -f ../data/carbon_dioxide.db ../data/surface_temperature.db
 python3 project/code.py
 
 # Check if the output files exist and are newly created
-if [[ -f "data/carbon_dioxide.db" && -f "data/surface_temperature.db" ]]; then
+if [[ -f "../data/carbon_dioxide.db" && -f "../data/surface_temperature.db" ]]; then
     echo "Test passed: Output files exist."
     
     # Run the Python tests to check the contents of the files
