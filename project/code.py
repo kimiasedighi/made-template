@@ -5,7 +5,6 @@ import pandas as pd
 import os
 import sqlite3
 
-
 def fetch_geojson_data(url):
     try:
         response = requests.get(url)
@@ -44,10 +43,18 @@ def save_to_sqlite(df, db_path, table_name):
         print(f"Data successfully written to {db_path} in table {table_name}")
 
 if __name__ == "__main__":
+
+    # Define the absolute path to the data directory
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(base_dir, "..", "data")
+    os.makedirs(data_dir, exist_ok=True)
+
     url = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Indicator_3_2_Climate_Indicators_Monthly_Atmospheric_Carbon_Dioxide_concentrations/FeatureServer/0/query?where=1=1&outFields=*&f=geojson"
     geojson_data = fetch_geojson_data(url)
     if geojson_data:
-        csv_filename = os.path.join("..", "data", "carbon_dioxide.csv")
+        # csv_filename = os.path.join("..", "data", "carbon_dioxide.csv")
+        csv_filename = os.path.join(data_dir, "carbon_dioxide.csv")
+        
         
         geojson_to_csv(geojson_data, csv_filename)
 
@@ -62,7 +69,8 @@ if __name__ == "__main__":
     # Drop rows with invalid 'Date' or 'Value'
     df = df.dropna(subset=['Date', 'Value'])
 
-    db_path = os.path.join("..", "data", "carbon_dioxide.db")
+    # db_path = os.path.join("..", "data", "carbon_dioxide.db")
+    db_path = os.path.join(data_dir, "carbon_dioxide.db")
     save_to_sqlite(df, db_path, "carbon_dioxide")
 
     # Delete the CSV file after saving to the database
@@ -71,7 +79,8 @@ if __name__ == "__main__":
     url = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Indicator_3_1_Climate_Indicators_Annual_Mean_Global_Surface_Temperature/FeatureServer/0/query?where=1=1&outFields=*&f=geojson"
     geojson_data = fetch_geojson_data(url)
     if geojson_data:
-        csv_filename = os.path.join("..","data", "surface_temperature.csv")
+        # csv_filename = os.path.join("..","data", "surface_temperature.csv")
+        csv_filename = os.path.join(data_dir, "surface_temperature.csv")
         
         geojson_to_csv(geojson_data, csv_filename)
 
@@ -88,7 +97,8 @@ if __name__ == "__main__":
     valid_rows = is_decimal.all(axis=1)
     df = df[valid_rows]
 
-    db_path = os.path.join("..", "data", "surface_temperature.db")
+    # db_path = os.path.join("..", "data", "surface_temperature.db")
+    db_path = os.path.join(data_dir, "surface_temperature.db")
     save_to_sqlite(df, db_path, "surface_temperature")
 
     # Delete the CSV file after saving to the database

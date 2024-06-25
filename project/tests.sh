@@ -1,16 +1,20 @@
 #!/bin/bash
 
-# Remove existing output files to ensure the pipeline creates them
-rm -f ../data/carbon_dioxide.db ../data/surface_temperature.db
+# Get the absolute path of the script directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DATA_DIR="$SCRIPT_DIR/../data"
 
-python3 project/code.py
+# Remove existing output files to ensure the pipeline creates them
+rm -f "$DATA_DIR/carbon_dioxide.db" "$DATA_DIR/data/surface_temperature.db"
+
+python3 "$SCRIPT_DIR/code.py"
 
 # Check if the output files exist and are newly created
-if [[ -f "../data/carbon_dioxide.db" && -f "../data/surface_temperature.db" ]]; then
+if [[ -f "$DATA_DIR/carbon_dioxide.db" && -f "$DATA_DIR/surface_temperature.db" ]]; then
     echo "Test passed: Output files exist."
     
     # Run the Python tests to check the contents of the files
-    python3 test_pipeline.py
+    python3 "$SCRIPT_DIR/test_pipeline.py"
 
     if [[ $? -eq 0 ]]; then
         echo "Test passed: Output files are valid."
