@@ -3,7 +3,7 @@
 # Remove existing output files to ensure the pipeline creates them
 rm -f ../data/carbon_dioxide.db ../data/surface_temperature.db
 
-python3 code.py
+python3 project/code.py
 
 # Check if the output files exist and are newly created
 if [[ -f "../data/carbon_dioxide.db" && -f "../data/surface_temperature.db" ]]; then
