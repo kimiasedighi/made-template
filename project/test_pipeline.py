@@ -35,7 +35,7 @@ def test_output_files():
         df_temp = pd.read_sql_query("SELECT * FROM surface_temperature", conn)
         assert not df_temp.empty, "surface_temperature table is empty."
         # Check schema
-        expected_columns = {'ObjectId', 'Country', 'Unit'} | {f'F{year}' for year in range(1961, 2024)}
+        expected_columns = {'ObjectId', 'Country', 'Unit'} | {f'{year}' for year in range(1961, 2024)}
         assert set(df_temp.columns) == expected_columns, f"Unexpected columns in surface_temperature table: {df_temp.columns}"
 
 

@@ -4,6 +4,8 @@ import csv
 import pandas as pd
 import os
 import sqlite3
+import matplotlib.pyplot as plt
+
 
 def fetch_geojson_data(url):
     try:
@@ -42,6 +44,50 @@ def save_to_sqlite(df, db_path, table_name):
         df.to_sql(table_name, conn, if_exists='replace', index=False)
         print(f"Data successfully written to {db_path} in table {table_name}")
 
+def preprocess_dates_co2(df):
+    # Convert '1958M03' to '1958-03-01'
+    df['Date'] = df['Date'].apply(lambda x: f"{x[:4]}-{x[5:]}-01")
+    return df
+
+def remove_f_prefix(df):
+    cols_with_f = [col for col in df.columns if col.startswith('F')]
+    df.rename(columns={col: col[1:] for col in cols_with_f}, inplace=True)
+    return df
+
+def plot_data(df_co2, df_temp):
+    # Plot CO2 concentrations over time
+    
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(pd.to_datetime(df_co2['Date']), df_co2['Value'], label='CO2 Concentration (ppm)')
+    plt.xlabel('Date')
+    plt.ylabel('CO2 Concentration (ppm)')
+    plt.title('Monthly Atmospheric CO2 Concentrations')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig('co2_concentrations.png')
+    plt.show()
+
+    # Melt the temperature dataframe
+    value_vars = [col for col in df_temp.columns if col.isdigit()]
+    df_temp_melted = df_temp.melt(id_vars=["Country", "Unit"], value_vars=value_vars, var_name="Year", value_name="Temperature")
+    df_temp_melted['Year'] = df_temp_melted['Year'].astype(int)  # Convert year to integer
+
+    # Aggregate the temperature data by year (average temperature across countries)
+    df_temp_agg = df_temp_melted.groupby('Year')['Temperature'].mean().reset_index()
+
+    # Plot global surface temperature over time
+    plt.figure(figsize=(10, 5))
+    plt.plot(df_temp_agg['Year'], df_temp_agg['Temperature'], label='Global Surface Temperature (°C)')
+    plt.xlabel('Year')
+    plt.ylabel('Temperature (°C)')
+    plt.title('Annual Mean Global Surface Temperature')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig('global_surface_temperature.png')
+    plt.show()
+
+
 if __name__ == "__main__":
 
     # Define the absolute path to the data directory
@@ -58,20 +104,22 @@ if __name__ == "__main__":
         
         geojson_to_csv(geojson_data, csv_filename)
 
-    df = pd.read_csv(csv_filename)
+    df_co2 = pd.read_csv(csv_filename)
 
     # Drop the 'ISO2', 'ISO3', etc. (not needed columns) if they exist
-    df = df.drop(columns=['ISO2', 'ISO3', 'Indicator', 'Source', 'CTS_Code', 'CTS_Name', 'CTS_Full_Descriptor'], errors='ignore')
+    df_co2= df_co2.drop(columns=['ISO2', 'ISO3', 'Indicator', 'Source', 'CTS_Code', 'CTS_Name', 'CTS_Full_Descriptor'], errors='ignore')
           
     # Ensure the 'Value' column is numeric 
-    df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
+    df_co2['Value'] = pd.to_numeric(df_co2['Value'], errors='coerce')
 
     # Drop rows with invalid 'Date' or 'Value'
-    df = df.dropna(subset=['Date', 'Value'])
+    df_co2 = df_co2.dropna(subset=['Date', 'Value'])
+    df_co2 = preprocess_dates_co2(df_co2)
+    df_co2 = df_co2[df_co2['Unit'] == 'Parts Per Million']  # Filter for 'Parts Per Million' unit
 
     # db_path = os.path.join("..", "data", "carbon_dioxide.db")
     db_path = os.path.join(data_dir, "carbon_dioxide.db")
-    save_to_sqlite(df, db_path, "carbon_dioxide")
+    save_to_sqlite(df_co2, db_path, "carbon_dioxide")
 
     # Delete the CSV file after saving to the database
     os.remove(csv_filename)
@@ -84,22 +132,31 @@ if __name__ == "__main__":
         
         geojson_to_csv(geojson_data, csv_filename)
 
-    df = pd.read_csv(csv_filename)
+    df_temp = pd.read_csv(csv_filename)
+
+    
     
     # Drop the 'ISO2', 'ISO3', etc. (not needed columns) if they exist
-    df = df.drop(columns=['ISO2', 'ISO3', 'Indicator', 'Source', 'CTS_Code', 'CTS_Name', 'CTS_Full_Descriptor'], errors='ignore')
+    df_temp = df_temp.drop(columns=['ISO2', 'ISO3', 'Indicator', 'Source', 'CTS_Code', 'CTS_Name', 'CTS_Full_Descriptor'], errors='ignore')
     
+    
+
     # Check if values in columns from 'F1961' to 'F2023' are decimal numbers
-    cols_to_check = df.loc[:, 'F1961':'F2023']
+    cols_to_check = df_temp.loc[:, 'F1961':'F2023']
     is_decimal = cols_to_check.apply(lambda col: col.map(lambda x: isinstance(x, float) or (isinstance(x, str) and x.replace('.', '', 1).isdigit())))
             
     # Filter rows where all values in columns from 'F1961' to 'F2023' are decimal numbers
     valid_rows = is_decimal.all(axis=1)
-    df = df[valid_rows]
+    df_temp = df_temp[valid_rows]
+
+    # Remove 'F' prefix from year columns
+    df_temp = remove_f_prefix(df_temp)
 
     # db_path = os.path.join("..", "data", "surface_temperature.db")
     db_path = os.path.join(data_dir, "surface_temperature.db")
-    save_to_sqlite(df, db_path, "surface_temperature")
+    save_to_sqlite(df_temp, db_path, "surface_temperature")
 
     # Delete the CSV file after saving to the database
     os.remove(csv_filename)
+
+    plot_data(df_co2, df_temp)
