@@ -46,8 +46,10 @@ def save_to_sqlite(df, db_path, table_name):
 
 def preprocess_dates_co2(df):
     # Convert '1958M03' to '1958-03-01'
-    df['Date'] = df['Date'].apply(lambda x: f"{x[:4]}-{x[5:]}-01")
+    df['Date'] = pd.to_datetime(df['Date'].apply(lambda x: f"{x[:4]}-{x[5:]}-01"), format='%Y-%m-%d')
+    df = df[(df['Date'].dt.year >= 1961) & (df['Date'].dt.year <= 2023)]
     return df
+    
 
 def remove_f_prefix(df):
     cols_with_f = [col for col in df.columns if col.startswith('F')]
@@ -55,9 +57,8 @@ def remove_f_prefix(df):
     return df
 
 def plot_data(df_co2, df_temp):
-    # Plot CO2 concentrations over time
-    
 
+    # Plot CO2 concentrations over time
     plt.figure(figsize=(10, 5))
     plt.plot(pd.to_datetime(df_co2['Date']), df_co2['Value'], label='CO2 Concentration (ppm)')
     plt.xlabel('Date')
