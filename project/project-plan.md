@@ -34,32 +34,31 @@ This dataset presents the mean surface temperature change during the period 1961
 ## Work Packages
 
 1. Data Acquisition and Initial Setup
-Objective: Set up project infrastructure and acquire necessary datasets.
+* Objective: Set up project infrastructure and acquire necessary datasets.
 
 2. Development of Data Pipeline
-Objective: Build and test an automated data pipeline for preprocessing the data.
-Tasks:
+* Objective: Build and test an automated data pipeline for preprocessing the data.
+* Tasks:
 Task 2.1: Write Python scripts for downloading, cleaning, and preprocessing data.
 Task 2.2: Create pipeline.sh to automate the execution of the data pipeline script.
 Task 2.3: Store preprocessed data in the /data directory in an appropriate format.
 
 3. Data Analysis and Reporting
-Objective: Analyze the cleaned data and prepare an initial data report.
-Tasks:
+* Objective: Analyze the cleaned data and prepare an initial data report.
+* Tasks:
 Task 3.1: Perform exploratory and statistical data analysis.
 Task 3.2: Generate visualizations and initial findings.
 Task 3.3: Compile findings into a data-report.pdf detailing the data sources, pipeline, and preliminary results.
 
 4. Automated Testing and CI Integration
-Objective: Ensure data pipeline reliability and automation via continuous integration.
-Tasks:
+* Objective: Ensure data pipeline reliability and automation via continuous integration.
+* Tasks:
 Task 4.1: Write automated tests for the data pipeline.
 Task 4.2: Create tests.sh to execute the system tests.
 Task 4.3: Set up GitHub Actions to run tests on every push to the main branch.
 
 5. Final Analysis and Report Development
-Objective: Conduct in-depth analysis and develop the final project report.
-Tasks:
+* Objective: Conduct in-depth analysis and develop the final project report.
+* Tasks:
 Task 5.1: Continue detailed data analysis focusing on identifying trends, anomalies, and potential causal links.
 Task 5.2: Develop the final project report analysis-report.pdf using insights from the analysis.
-
