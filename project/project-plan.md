@@ -34,9 +34,9 @@ This dataset presents the mean surface temperature change during the period 1961
 ## Work Packages
 
 1. Data Acquisition and Initial Setup
-* Objective: Set up project infrastructure and acquire necessary datasets.
-* Tasks:
-- Task 1.1: Download datasets on CO2 concentrations and surface temperature changes.
+* **Objective**: Set up project infrastructure and acquire necessary datasets.
+* **Tasks**:
+- **Task 1.1**: Download datasets on CO2 concentrations and surface temperature changes.
 
 2. Development of Data Pipeline
 * Objective: Build and test an automated data pipeline for preprocessing the data.
