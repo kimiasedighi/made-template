@@ -6,8 +6,8 @@
 This repository contains both a data science project developed over the course of the semester and the exercises submitted throughout the semester. Before you begin, ensure you have Python and Jayvee installed.
 
 ## Project
-### Title: Climate Change Impact Analysis
-### Description
+### Climate Change Impact Analysis
+#### Description
 This project aims to analyze the correlation between atmospheric CO2 concentrations and global surface temperatures over the past several decades. By leveraging advanced data engineering techniques, we will clean, preprocess, and analyze large datasets to identify trends and patterns that highlight the impact of human activities on climate change. The project includes developing data science workflows and performing in-depth analysis to support the hypothesis that rising CO2 levels are associated with increasing global temperatures.
 
 ## Exercises
