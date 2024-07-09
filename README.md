@@ -2,12 +2,13 @@
 
 ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex1) ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex2) ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex3) ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex4) ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex5)
 
-# Methods of Advanced Data Engineering Project
-## Project Title: Climate Change Impact Analysis
-### Project Description
-This project aims to analyze the correlation between atmospheric CO2 concentrations and global surface temperatures over the past several decades. By leveraging advanced data engineering techniques, we will clean, preprocess, and analyze large datasets to identify trends and patterns that highlight the impact of human activities on climate change. The project includes developing data science workflows and performing in-depth analysis to support the hypothesis that rising CO2 levels are associated with increasing global temperatures.
-
+# Methods of Advanced Data Engineering Course
 This repository contains both a data science project developed over the course of the semester and the exercises submitted throughout the semester. Before you begin, ensure you have Python and Jayvee installed.
+
+## Project
+### Title: Climate Change Impact Analysis
+### Description
+This project aims to analyze the correlation between atmospheric CO2 concentrations and global surface temperatures over the past several decades. By leveraging advanced data engineering techniques, we will clean, preprocess, and analyze large datasets to identify trends and patterns that highlight the impact of human activities on climate change. The project includes developing data science workflows and performing in-depth analysis to support the hypothesis that rising CO2 levels are associated with increasing global temperatures.
 
 ## Exercises
 Throughout the semester, exercises are completed using Jayvee and result in the following files:
