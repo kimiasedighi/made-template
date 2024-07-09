@@ -23,7 +23,7 @@ Automated exercise feedback is provided using a GitHub action defined in .github
 
 To view each exercise feedback, navigate to Actions -> Exercise Feedback in the repository.
 
-The exercise feedback is triggered whenever you make a change to files in the exercises folder and push your changes to GitHub. To see the feedback, open the latest GitHub Action run, then open the exercise-feedback job and the Exercise Feedback step. You should see command line output similar to this:
+The exercise feedback is triggered whenever a change is made to files in the 'exercises' folder and pushed to GitHub. To see the feedback, open the latest GitHub Action run, then open the exercise-feedback job and the Exercise Feedback step. You should see command line output similar to this:
 
 ```sh
 Found exercises/exercise1.jv, executing model...
