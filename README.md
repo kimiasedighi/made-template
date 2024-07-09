@@ -3,6 +3,9 @@
 ![](https://byob.yarr.is/jvalue/made-template/score_ex1) ![](https://byob.yarr.is/jvalue/made-template/score_ex2) ![](https://byob.yarr.is/jvalue/made-template/score_ex3) ![](https://byob.yarr.is/jvalue/made-template/score_ex4) ![](https://byob.yarr.is/jvalue/made-template/score_ex5)
 
 # Methods of Advanced Data Engineering Template Project
+## Project Title: Climate Change Impact Analysis
+### Project Description
+This project aims to analyze the correlation between atmospheric CO2 concentrations and global surface temperatures over the past several decades. By leveraging advanced data engineering techniques, we will clean, preprocess, and analyze large datasets to identify trends and patterns that highlight the impact of anthropogenic activities on climate change. The project includes developing data science workflows and performing in-depth analysis to support the hypothesis that rising CO2 levels are associated with increasing global temperatures.
 
 This template project provides some structure for your open data project in the MADE module at FAU.
 This repository contains (a) a data science project that is developed by the student over the course of the semester, and (b) the exercises that are submitted over the course of the semester.
