@@ -10,9 +10,7 @@ This project aims to analyze the correlation between atmospheric CO2 concentrati
 This repository contains both a data science project developed over the course of the semester and the exercises submitted throughout the semester. Before you begin, ensure you have Python and Jayvee installed.
 
 ## Exercises
-Throughout the semester, you will complete exercises using Jayvee.
-
-By the end of the semester, your repository should contain the following files:
+Throughout the semester, exercises are completed using Jayvee and will result in the following files:
 
 1. `./exercises/exercise1.jv`
 2. `./exercises/exercise2.jv`
@@ -23,7 +21,7 @@ By the end of the semester, your repository should contain the following files:
 ### Exercise Feedback
 Automated exercise feedback is provided using a GitHub action defined in .github/workflows/exercise-feedback.yml.
 
-To view your exercise feedback, navigate to Actions -> Exercise Feedback in your repository.
+To view each exercise feedback, navigate to Actions -> Exercise Feedback in the repository.
 
 The exercise feedback is triggered whenever you make a change to files in the exercises folder and push your changes to GitHub. To see the feedback, open the latest GitHub Action run, then open the exercise-feedback job and the Exercise Feedback step. You should see command line output similar to this:
 
