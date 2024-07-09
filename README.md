@@ -10,7 +10,7 @@ This project aims to analyze the correlation between atmospheric CO2 concentrati
 This repository contains both a data science project developed over the course of the semester and the exercises submitted throughout the semester. Before you begin, ensure you have Python and Jayvee installed.
 
 ## Exercises
-Throughout the semester, exercises are completed using Jayvee and will result in the following files:
+Throughout the semester, exercises are completed using Jayvee and result in the following files:
 
 1. `./exercises/exercise1.jv`
 2. `./exercises/exercise2.jv`
