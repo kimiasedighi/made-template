@@ -3,7 +3,7 @@
 ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex1) ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex2) ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex3) ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex4) ![](https://byob.yarr.is/kimiasedighi/made-template/score_ex5)
 
 # Methods of Advanced Data Engineering Course
-This repository contains both a data science project developed over the course of the semester and the exercises submitted throughout the semester. Before you begin, ensure you have Python and Jayvee installed.
+This repository contains both a data engineering project developed over the course of the semester and the exercises submitted throughout the semester. Before you begin, ensure you have Python and Jayvee installed.
 
 ## Project
 ### Climate Change Impact Analysis
